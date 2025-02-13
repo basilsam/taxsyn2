@@ -34,7 +34,7 @@
             <!-- Forgot and Sign Up Links moved above OR line and below the login button -->
             <div class="forgot-signup">
                 <a href="#">Forgot?</a>
-                <a href="New/sign.html">Sign Up</a>
+                <a href="/New/html/sign.html">Sign Up</a>
             </div>
 
             <div class="alt-login">
@@ -45,7 +45,7 @@
 
             <!-- Placeholder link for Google login -->
             <a href="https://accounts.google.com/o/oauth2/auth" class="google-login">
-                <img src="/pic/download.jpg" alt="Google Logo" width="20">
+                <img src="/pic/google.jpg" alt="Google Logo" width="20">
                 Log in with Google
             </a>
 
@@ -91,7 +91,7 @@
             }else if(email === storedEmail && password === storedPassword) {
                 // Successful login
                 alert('Logged in successfully!');
-                window.location.href = "/New/new.html";
+                window.location.href = "/New/html/new.html";
             } else {
                 // Invalid credentials
                 document.getElementById('warningMessage').innerText = 'Incorrect email or password.';
