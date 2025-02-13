@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="/style/sign.css">
+</head>
+<body>
+    <button class="toggle-mode" onclick="toggleMode()">Toggle Mode</button>
+
+    <div class="container">
+        <div class="signup-box">
+            <div class="logo">YourLogo</div>
+
+            <input type="email" id="email" placeholder="Email address" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="password" id="confirmPassword" placeholder="Confirm password" required>
+
+            <button id="signupBtn" onclick="signup()">Sign up</button>
+
+            <div class="footer-links">
+                <a href="#">Forgot password?</a>
+                <a href="/New/signin.html">Log in</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        function signup() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (password === confirmPassword) {
+                // Store the password and email in localStorage
+                localStorage.setItem('email', email);
+                localStorage.setItem('password', password);
+
+                // Redirect to login page or refresh
+                window.location.href = "/signin.html";  // or location.reload() to refresh
+            } else {
+                alert("Passwords do not match.");
+            }
+        }
+    </script>
+</body>
+</html>
