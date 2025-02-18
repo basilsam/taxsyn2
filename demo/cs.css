@@ -1,0 +1,120 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+#map {
+    height: 100vh; /* Make the map take the entire viewport height */
+    width: 100%;   /* Full width of the screen */
+}
+
+header {
+    position: fixed; /* Fix the header at the top */
+    top: 0; /* Align it to the top */
+    left: 0; /* Ensure it starts from the left */
+    width: 100%; /* Full width */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1px 15px;
+    background-color: #2195f306; /* Blue background */
+    color: white; /* White text */
+    z-index: 1000; /* Make sure it's on top of other content */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow for better visibility */
+}
+
+.header-left {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header-right {
+    display: flex;
+    gap: 15px; /* Space between the images */
+    margin-top: 8px;
+}
+
+.header-right img {
+    height: 40px; /* Adjust the size of the image */
+    width: auto;
+}
+
+
+
+.status-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: none;
+}
+
+
+
+.locate-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: white url('https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.2/collection/components/icon/svg/location.svg') no-repeat center center;
+    background-size: 30px; /* Size of the icon inside button */
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.location-icon {
+    width: 20px;
+    height: 20px;
+    background: #2196F3;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px #2196F3;
+}
+
+.accuracy-circle {
+    stroke: #2196F3;
+    stroke-opacity: 0.3;
+    fill: #2196F3;
+    fill-opacity: 0.1;
+}
+
+.accuracy-circle.warning {
+    stroke: #ff0000;
+    fill: #ff0000;
+}
+
+.leaflet-control-zoom {
+    position: absolute;
+    top: 70px; /* Place the zoom buttons below the header */
+    left: 20px; /* Adjust the left position */
+    z-index: 1000; /* Ensure the zoom controls are above the map */
+}
+/* CSS additions */
+#search-container {
+    position: fixed;
+    top: 60px;
+    left: 20px;
+    z-index: 1000;
+}
+#search-box {
+    padding: 8px;
+    width: 300px;
+}
+#suggestions {
+    background: white;
+    border: 1px solid #ddd;
+    max-height: 200px;
+    overflow-y: auto;
+}
+#suggestions div {
+    padding: 8px;
+    cursor: pointer;
+}
+#suggestions div:hover {
+    background: #f0f0f0;
+}
+

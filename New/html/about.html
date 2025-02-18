@@ -3,59 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landslide Prevention</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Assuming you have CSS ready -->
+    <title>Landslide Awareness</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
         }
 
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
+        body {
+            line-height: 1.6;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            min-height: 100vh;
         }
 
-        .infographic {
+        .main-content {
             width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
+        }
+
+        .navbar {
+            background: #2c3e50;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: #f5f5f5;
+            padding: 2rem;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            border-left: 1px solid #ddd;
+            overflow-y: auto;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-nav a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: block;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar-nav a:hover {
+            background-color: #e0e0e0;
         }
 
         .content-section {
-            background-color: #fff;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .subsection {
+            margin-bottom: 2rem;
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        @media (max-width: 600px) {
-            .container {
-                padding: 10px;
+        .subsection-title {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .content-list {
+            list-style: none;
+        }
+
+        .content-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .content-list li::before {
+            content: "•";
+            color: #2c3e50;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: fixed;
+                right: -250px;
+                transition: right 0.3s ease;
+                background: white;
+                box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+                z-index: 99;
+            }
+
+            .sidebar.active {
+                right: 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .content-section {
+                padding: 2rem 1rem;
+            }
+
+            .subsection {
+                padding: 1.5rem;
             }
         }
     </style>
+    <script>
+        function toggleMenu() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
 </head>
 <body>
-    <div class="container">
-        <img src="/pic/DALL·E 2025-02-12 21.31.21 - A professional, vertically responsive infographic with an environmental theme, focused on everyday actions to prevent landslides. The design includes .webp" alt="Landslide Prevention Infographic" class="infographic">
+    <div class="main-content">
+        <nav class="navbar">
+            <h1 class="logo">Landslide Info</h1>
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+        </nav>
 
-        <div class="content-section">
-            <h2>About Landslide Prevention</h2>
-            <p>Learn about simple everyday actions that can help prevent landslides, protect the environment, and save lives. This website is designed to grow, with more content being added over time.</p>
-        </div>
+        <section class="hero">
+            <h2>Understanding Landslides</h2>
+            <p>Landslides are rocks, soil, and mud falling down a slope. They can happen suddenly or develop slowly over time. They are deadly and can sweep away homes and roads. Landslides can be triggered by earthquakes, heavy rain, melting snow, volcanic eruptions and wildfires. Mudflows, debris flows, mudslides and avalanches are all types of landslides. The climate crisis is causing more intense rain events, earlier snow melt, rising sea levels and larger wildfires, increasing landslide risk. But we can take action to prepare. Prepare now to protect yourself, your loved ones and your home.</p>
+        </section>
 
-        <div class="content-section">
-            <h2>Future Additions</h2>
-            <p>Stay tuned for more informative content on environmental conservation, landslide detection technologies, and community safety tips.</p>
-        </div>
+        <section id="prevention" class="content-section">
+            <h2 class="section-title">Prevention of Landslides</h2>
+            <p class="section-description">Reducing the risk of landslides through engineering, water management, and land-use planning.</p>
+            <div class="subsection">
+                <h3 class="subsection-title">Engineering Solutions</h3>
+                <ul class="content-list">
+                    <li>Retaining Walls: Concrete or stone walls hold back soil.</li>
+                    <li>Soil Nailing: Steel rods reinforce unstable slopes.</li>
+                    <li>Gabion Walls: Wire mesh baskets filled with rocks stabilize slopes.</li>
+                    <li>Terracing: Steps slow water flow and prevent erosion.</li>
+                    <li>Rock Bolts: Steel bolts drilled into rock prevent rock falls.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="awareness" class="content-section">
+            <h2 class="section-title">Awareness of Landslides</h2>
+            <p class="section-description">Public awareness helps reduce casualties and property damage through education.</p>
+            <div class="subsection">
+                <h3 class="subsection-title">Identifying Landslide-Prone Areas</h3>
+                <ul class="content-list">
+                    <li>Steep Slopes & Loose Soil: Unstable ground is more prone to landslides.</li>
+                    <li>High Rainfall Regions: Excess water increases risk.</li>
+                    <li>Seismic Zones: Earthquake-prone areas face higher risks.</li>
+                    <li>Deforested Land: Lacks roots to hold soil in place.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="causes" class="content-section">
+            <h2 class="section-title">Causes of Landslides</h2>
+            <p class="section-description">Landslides occur due to natural and human-induced factors, leading to slope instability.</p>
+            <div class="subsection">
+                <h3 class="subsection-title">Natural Causes</h3>
+                <ul class="content-list">
+                    <li>Heavy Rain: Excessive rainfall saturates the soil, reducing stability.</li>
+                    <li>Waterlogged Soil: Increased moisture weakens slopes.</li>
+                    <li>Wave or River Erosion: Water erodes the base of slopes, making them unstable.</li>
+                    <li>Steep Slopes: Naturally steep terrains are more prone to landslides.</li>
+                    <li>Earthquakes: Seismic activity can trigger sudden slope failures.</li>
+                    <li>Wildfires: Loss of vegetation weakens soil structure, increasing erosion risk.</li>
+                </ul>
+            </div>
+            <div class="subsection">
+                <h3 class="subsection-title">Human Causes</h3>
+                <ul class="content-list">
+                    <li>Drainage onto Steep Slopes: Poor drainage increases water saturation.</li>
+                    <li>Unsafe Excavation: Removing support at the base of a slope destabilizes it.</li>
+                    <li>Poor Placement of Septic Tanks: Excess water from leaks weakens soil.</li>
+                    <li>Too Much Weight on a Slope: Heavy buildings or roads add stress.</li>
+                    <li>No Drainage from Pavement: Runoff water accumulates and weakens slopes.</li>
+                    <li>Unsafe Fill Zones: Unstable artificial fills can lead to collapses.</li>
+                    <li>Poorly Monitored Irrigation Systems: Excess water infiltration weakens soil.</li>
+                </ul>
+            </div>
+        </section>
     </div>
+
 </body>
 </html>

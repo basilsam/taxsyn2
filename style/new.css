@@ -5,48 +5,52 @@ body {
     flex-direction: column;
     min-height: 100vh;
     background-color: rgb(240, 236, 231);
+    background-image: url(/pic/DALL·E\ 2025-02-13\ 20.24.14\ -\ A\ stylized\ environmental-themed\ background\ featuring\ a\ peaceful\ landscape\ with\ fewer\ but\ more\ prominent\ mountains.\ The\ scene\ includes\ lush\ greenery\,\ s.webp);
 }
 
 header {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
-    background-color: rgb(14, 13, 45);
+    padding: 0px;
     align-items: center;
-    color: rgb(255, 255, 255);
+    color: rgba(71, 121, 179, 0.875);
+ 
+    
 }
+
 
 .logo {
     display: flex;
     align-items: center;
-    font-size: 1.5em;
+    font-size: 2em;
     font-weight: bold;
+
 }
 
 .logo-profile-picture img {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     margin-right: 10px;
 }
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    margin: 0;
-    padding: 0;
+.logo span {
+    text-decoration: underline;
 }
 
-nav ul li a {
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-}
 
 main {
     flex: 1;
     text-align: center;
     padding: 20px;
+    
+    
+}
+
+h1 {
+    margin-bottom: 50px; /* Adjust the value as needed */
+    text-decoration: underline;
+
+    
 }
 
 .events-container {
@@ -55,16 +59,24 @@ main {
     flex-wrap: wrap;
     gap: 30px;
     margin-top: 50px;
+    height: 300px;
+    width: auto;
+   
+ 
 }
 
 .event {
+    position: relative;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
     overflow: hidden;
     width: 320px;
-    height: 520px;
+    height:    300px;
     transition: transform 0.3s ease;
+    backdrop-filter:blur(5px);
+    background-color: rgba(0, 0, 0, 0.579);
+
 }
 
 .event:hover {
@@ -73,14 +85,29 @@ main {
 
 .event img {
     width: 100%;
-    height: 380px;
+    height: 300px;
     object-fit: cover;
-    margin-bottom: auto; /* This pushes the image to the bottom */
+
+    opacity: 90%;
 }
+.event-info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    backdrop-filter: blur(4px); /* Blur effect */
+    text-align: center;
+    padding: 10px 0;
+}
+
+.event-info p {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;}
 
 footer {
     background-color: #101424;
-    padding: 20px;
     text-align: center;
     color: rgba(245, 228, 207, 0.8);
     margin-top: auto;
